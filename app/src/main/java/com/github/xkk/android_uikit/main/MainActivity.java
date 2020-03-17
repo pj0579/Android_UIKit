@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.github.xkk.android_uikit.R;
 import com.github.xkk.android_uikit.common.BaseRecyclerViewAdapter;
 import com.github.xkk.android_uikit.main.card_views.CardPagerActivity;
+import com.github.xkk.android_uikit.main.card_views.TinderActivity;
 import com.github.xkk.android_uikit.main.measure_spec.MeasureSpecActivity;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(inent);
                         break;
                     case 1:
-                        Intent card = new Intent(MainActivity.this, CardPagerActivity.class);
+                        Intent card = new Intent(MainActivity.this, TinderActivity.class);
                         startActivity(card);
                         break;
                 }
