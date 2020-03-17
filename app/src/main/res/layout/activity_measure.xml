@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <com.github.xkk.android_uikit.main.measure_spec.MeasureView
+        android:id="@+id/measure"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/measurespec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/execly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置MeasureView为固定值" />
+
+    <Button
+        android:id="@+id/match"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置MeasureView为match_parent" />
+
+    <Button
+        android:id="@+id/wrap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置MeasureView为wrap_parent" />
+</LinearLayout>
