@@ -17,7 +17,7 @@ import com.github.xkk.android_uikit.common.BaseActivity;
 public class CardPagerActivity extends BaseActivity {
     protected static final String TAG = "MainActivity";
     private int[] mImgIds;
-    private CardPagerViewer mViewPager;
+    private ViewPager mViewPager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,6 @@ public class CardPagerActivity extends BaseActivity {
                 imageView.setPadding(50, 50, 50, 50);
                 imageView.setTag(position + "");
                 container.addView(imageView);
-                mViewPager.setObjectForPosition(imageView, position);
                 return imageView;
             }
 
