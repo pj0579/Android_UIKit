@@ -15,6 +15,7 @@ public class TinderAnimation implements ViewPager.PageTransformer {
             float scale = (page.getWidth() + 40 * position) / (float) (page.getWidth());
             page.setScaleX(scale);
             page.setScaleY(scale);
+            // 透明度改变
             if(position==0){
                 page.setAlpha(1);
             }else if(position<-2){

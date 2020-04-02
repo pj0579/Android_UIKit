@@ -12,6 +12,7 @@ import com.github.xkk.android_uikit.common.BaseRecyclerViewAdapter;
 import com.github.xkk.android_uikit.main.card_views.CardPagerActivity;
 import com.github.xkk.android_uikit.main.card_views.TinderActivity;
 import com.github.xkk.android_uikit.main.measure_spec.MeasureSpecActivity;
+import com.github.xkk.android_uikit.main.wangyiyun.WangyiyunActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         List<String> list = new ArrayList<>();
         list.add("子View params对自己mode的影响");
         list.add("优酷首页高清板块切换效果");
+        list.add("网易云切换(照着自定义-移花接木撸)");
         mainRecyclerViewAdapter = new MainRecyclerViewAdapter(list, this, R.layout.list_item);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mainRecyclerViewAdapter);
@@ -61,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
                     case 1:
                         Intent card = new Intent(MainActivity.this, TinderActivity.class);
                         startActivity(card);
+                        break;
+                    case 2:
+                        Intent wangyiyun = new Intent(MainActivity.this, WangyiyunActivity.class);
+                        startActivity(wangyiyun);
                         break;
                 }
             }

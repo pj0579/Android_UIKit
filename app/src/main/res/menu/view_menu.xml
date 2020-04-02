@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_youku"
+        android:orderInCategory="100"
+        android:title="优酷电影切换效果"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_common"
+        android:orderInCategory="100"
+        android:title="常规切换效果"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_loop_auto"
+        android:orderInCategory="100"
+        android:title="常规自动轮播切换效果"
+        app:showAsAction="never" />
+
+</menu>

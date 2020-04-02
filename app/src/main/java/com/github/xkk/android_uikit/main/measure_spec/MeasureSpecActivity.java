@@ -1,9 +1,12 @@
 package com.github.xkk.android_uikit.main.measure_spec;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Layout;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -58,5 +61,36 @@ public class MeasureSpecActivity extends BaseActivity  {
 
     public void changeMode(){
        measurespec.setText("子View measureSpecMode："+measureView.getMode());
+        Integer a = new Integer(1);
+        Integer b = new Integer(1);
+        Log.v("test111",a==b?"1":"12");
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.v("生命周期B","onPause");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.v("生命周期B","onStart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.v("生命周期B","onStop");
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.v("生命周期B","onResume");
+    }
+
+
+
 }

@@ -16,9 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".main.measure_spec.MeasureSpecActivity"/>
-        <activity android:name=".main.card_views.CardPagerActivity"/>
-        <activity android:name=".main.card_views.TinderActivity"/>
+        <activity android:name=".main.measure_spec.MeasureSpecActivity" />
+        <activity android:name=".main.card_views.CardPagerActivity" />
+        <activity
+            android:name=".main.card_views.TinderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".main.wangyiyun.WangyiyunActivity"/>
     </application>
 
 </manifest>
