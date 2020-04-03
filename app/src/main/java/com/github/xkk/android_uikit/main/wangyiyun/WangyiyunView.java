@@ -1,5 +1,6 @@
 package com.github.xkk.android_uikit.main.wangyiyun;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -14,13 +15,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WangyiyunView extends ViewGroup {
-    private List<Integer> indexList = new ArrayList<>(); // 循环滚动里面的数据
     private boolean isBeingDragged = false;
     private float lastX;
     private float lastY;
     private float mOffsetPercent;
     private float mOffsetX;
     private boolean isReordered = false;
+    private float v; // 滑动速度
+    private ValueAnimator mAnimator;
 
     public WangyiyunView(Context context) {
         super(context);
@@ -28,7 +30,6 @@ public class WangyiyunView extends ViewGroup {
 
     public WangyiyunView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
     public WangyiyunView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -38,7 +39,7 @@ public class WangyiyunView extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int count = indexList.size();
+        int count = 3;
         for (int i = 0; i < count; i++) {
             // 布局i下的View
             View view = getChildAt(i);
@@ -48,7 +49,7 @@ public class WangyiyunView extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int count = indexList.size();
+        int count = 3;
         for (int i = 0; i < count; i++) {
             // 布局i下的View
             View view = getChildAt(i);
@@ -68,6 +69,7 @@ public class WangyiyunView extends ViewGroup {
 
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                abortAnimation();
                 lastX = x;
                 lastY = y;
                 break;
@@ -82,6 +84,7 @@ public class WangyiyunView extends ViewGroup {
                 break;
             case MotionEvent.ACTION_MOVE:
                 isBeingDragged = false;
+                handleFixAnimation();
                 break;
         }
         return isBeingDragged;
@@ -96,6 +99,7 @@ public class WangyiyunView extends ViewGroup {
         float offsetX;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                abortAnimation();
                 offsetX = x - lastX;
                 Log.v("offSetX", offsetX + "");
                 mOffsetX += offsetX;
@@ -108,6 +112,7 @@ public class WangyiyunView extends ViewGroup {
                 break;
             case MotionEvent.ACTION_UP:
                 isBeingDragged = false;
+                handleFixAnimation();
                 break;
         }
         lastX = x;
@@ -115,7 +120,50 @@ public class WangyiyunView extends ViewGroup {
         return true;
     }
 
+    public void handleFixAnimation() {
+        if (getChildCount() == 0) {
+            return;
+        }
+        float start = mOffsetX;
 
+        float end;
+        if (mOffsetPercent > 0.5F) {
+            end = getMeasuredWidth();
+        } else if (mOffsetX < -0.5F) {
+            end = -getMeasuredWidth();
+        } else {
+            end = 0F;
+        }
+        startValueAnimator(start, end);
+    }
+
+    private void startValueAnimator(float start, float end) {
+        if (start == end) {
+            //起始点和结束点一样，那还播放什么动画，出去
+            return;
+        }
+        //先打断之前的动画，如果正在播放的话
+        abortAnimation();
+        //创建动画对象
+        mAnimator = ValueAnimator.ofFloat(start, end);
+        mAnimator.setDuration(500);
+        mAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mOffsetX
+                        = (float
+                        ) animation.getAnimatedValue();
+                onItemMove();
+            }
+        });
+        mAnimator.start();
+    }
+
+    private void abortAnimation() {
+        if (mAnimator != null && mAnimator.isRunning()) {
+            mAnimator.cancel();
+        }
+    }
 
     private void onItemMove() {
         //更新滑动百分比
@@ -221,7 +269,6 @@ public class WangyiyunView extends ViewGroup {
     }
 
     public void exchangeOrder(int fromIndex, int toIndex) {
-        // 一样的就不用换了
         if (fromIndex == toIndex) {
             return;
         }
@@ -241,13 +288,6 @@ public class WangyiyunView extends ViewGroup {
 
         //通知重绘，刷新视图
         invalidate();
-    }
-
-    public void init() {
-        int count = 3;
-        for (int i = 0; i < count; i++) {
-            indexList.add(i);
-        }
     }
 
     /**
