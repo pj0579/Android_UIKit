@@ -21,7 +21,8 @@
         <activity
             android:name=".main.card_views.TinderActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".main.wangyiyun.WangyiyunActivity"/>
+        <activity android:name=".main.wangyiyun.WangyiyunActivity" />
+        <activity android:name=".main.Text.TextChangeActivity" />
     </application>
 
 </manifest>

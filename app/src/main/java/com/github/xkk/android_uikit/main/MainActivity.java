@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.github.xkk.android_uikit.IMyAidlInterface;
 import com.github.xkk.android_uikit.R;
 import com.github.xkk.android_uikit.common.BaseRecyclerViewAdapter;
+import com.github.xkk.android_uikit.main.Text.TextChangeActivity;
 import com.github.xkk.android_uikit.main.card_views.CardPagerActivity;
 import com.github.xkk.android_uikit.main.card_views.TinderActivity;
 import com.github.xkk.android_uikit.main.measure_spec.MeasureSpecActivity;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         list.add("子View params对自己mode的影响");
         list.add("优酷首页高清板块切换效果");
         list.add("网易云切换(照着自定义-移花接木撸)");
-        list.add("大图加载");
+        list.add("文字渐变");
         mainRecyclerViewAdapter = new MainRecyclerViewAdapter(list, this, R.layout.list_item);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mainRecyclerViewAdapter);
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(wangyiyun);
                         break;
                     case 3:
+                        Intent text = new Intent(MainActivity.this, TextChangeActivity.class);
+                        startActivity(text);
                         break;
                 }
             }
