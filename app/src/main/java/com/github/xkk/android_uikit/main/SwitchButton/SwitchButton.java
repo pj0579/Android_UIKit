@@ -19,6 +19,7 @@ public class SwitchButton extends View {
     private Paint change_paint; // 变化的背景
     private Paint circle_small_paint; // 小圆
     private Paint circle_big_paint; // 大圆
+    private Paint big_graay_paint; // 底圆
 
     private int disable_backgroundColor; // 不变背景颜色
     private int able_backgroundColor; // 变化背景颜色
@@ -59,9 +60,14 @@ public class SwitchButton extends View {
         bg_paint.setStyle(Paint.Style.FILL);
         bg_paint.setAlpha(0);
 
+        big_graay_paint = new Paint();
+        big_graay_paint.setColor(Color.GRAY);
+        big_graay_paint.setAntiAlias(true);
+        big_graay_paint.setStyle(Paint.Style.FILL);
+
         change_paint = new Paint();
-        change_paint.setColor(border_color);
-        change_paint.setStyle(Paint.Style.STROKE);
+        change_paint.setColor(Color.WHITE);
+        change_paint.setStyle(Paint.Style.FILL);
         change_paint.setAntiAlias(true);
 
         circle_small_paint = new Paint();
@@ -78,11 +84,16 @@ public class SwitchButton extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        // 底圆
+        canvas.drawRoundRect(new RectF(3, 3, getWidth() - 3, getHeight() - 3), (getHeight() - 6) / 2, (getHeight() - 6
+        ) / 2, big_graay_paint);
+
         // 需要放大缩小的背景 这个在变到最大的时候会有一个边框
         canvas.save();
         canvas.scale(scale, scale, getWidth() / 2, getHeight() / 2);
-        canvas.drawRoundRect(new RectF(4, 4, getWidth() - 4, getHeight() - 4), (getHeight() - 8) / 2, (getHeight() - 8) / 2, change_paint);
+        canvas.drawRoundRect(new RectF(4, 4, getWidth() - 4, getHeight() - 4), (getHeight() - 10) / 2, (getHeight() - 10) / 2, change_paint);
         canvas.restore();
+
         // 画一个圆角长方形 这个只变化透明度
         canvas.drawRoundRect(new RectF(4, 4, getWidth() - 4, getHeight() - 4), (getHeight() - 8) / 2, (getHeight() - 8) / 2, bg_paint);
         // 带边框的圆 两个圆组合
@@ -118,8 +129,7 @@ public class SwitchButton extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 x = (Float) animation.getAnimatedValue();
-                change_paint.setStyle(Paint.Style.STROKE);
-                scale = (x / (getWidth() - getHeight()));
+                scale = (1-x / (getWidth() - getHeight()));
                 bg_paint.setAlpha((int) (255 * (x / (getWidth() - getHeight()))));
                 invalidate();
             }
@@ -137,13 +147,22 @@ public class SwitchButton extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 x = (Float) animation.getAnimatedValue();
-                scale = 1-(x / (getWidth() - getHeight()));
-                change_paint.setStyle(Paint.Style.STROKE);
+                scale =  1-(x / (getWidth() - getHeight()));
                 bg_paint.setAlpha((int) (255 * (x / (getWidth() - getHeight()))));
                 invalidate();
             }
         });
         startX = 0;
     }
+
+    /**
+     * 返回是否选中
+     * @return
+     */
+    public boolean isSelect() {
+        return x == 0;
+    }
+
+
 
 }
