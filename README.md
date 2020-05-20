@@ -9,3 +9,6 @@
 
 ## 文本渐变
 ![Alt text](https://github.com/pj0579/Android_UIKit/blob/master/2020-04-15%2017-50-02.2020-04-15%2017_50_19.gif?raw=true)
+
+## SwitchButton
+![Alt text](https://github.com/pj0579/Android_UIKit/blob/master/2020-05-20%2017-50-02.2020-04-15%2017_50_19.gif?raw=true)

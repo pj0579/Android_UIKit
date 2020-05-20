@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="MeasureView">
-        <attr name="measure_bg_color" format="color"/>
+        <attr name="measure_bg_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="SwitchButton">
+        <attr name="disable_backgroundColor" format="color" />
+        <attr name="able_backgroundColor" format="color" />
+        <attr name="border_color" format="color" />
+        <attr name="corner" format="dimension" />
     </declare-styleable>
 </resources>

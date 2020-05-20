@@ -1,10 +1,15 @@
 package com.github.xkk.android_uikit.main;
 
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Rect;
 import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,11 +21,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.xkk.android_uikit.IMyAidlInterface;
 import com.github.xkk.android_uikit.R;
 import com.github.xkk.android_uikit.common.BaseRecyclerViewAdapter;
+import com.github.xkk.android_uikit.main.SwitchButton.SwitchActivity;
 import com.github.xkk.android_uikit.main.Text.TextChangeActivity;
 import com.github.xkk.android_uikit.main.card_views.CardPagerActivity;
 import com.github.xkk.android_uikit.main.card_views.TinderActivity;
@@ -28,7 +35,11 @@ import com.github.xkk.android_uikit.main.measure_spec.MeasureSpecActivity;
 import com.github.xkk.android_uikit.main.wangyiyun.WangyiyunActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,10 +70,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void initData() {
         List<String> list = new ArrayList<>();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Handler handler = new Handler(Looper.getMainLooper());
+            }
+        }).start();
         list.add("子View params对自己mode的影响");
         list.add("优酷首页高清板块切换效果");
         list.add("网易云切换(照着自定义-移花接木撸)");
         list.add("文字渐变");
+        list.add("SwitchButton");
         mainRecyclerViewAdapter = new MainRecyclerViewAdapter(list, this, R.layout.list_item);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mainRecyclerViewAdapter);
@@ -86,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
                         Intent text = new Intent(MainActivity.this, TextChangeActivity.class);
                         startActivity(text);
                         break;
+                    case 4:
+                        Intent switchActivity = new Intent(MainActivity.this, SwitchActivity.class);
+                        startActivity(switchActivity);
+                        break;
                 }
             }
         });
@@ -102,4 +124,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         unbinder.unbind();
     }
+
+
+
 }
