@@ -25,9 +25,14 @@ public class SwitchButton extends View {
     private int able_backgroundColor; // 变化背景颜色
     private int border_color; // 边框颜色
     private float x = 0; // 圆圈所在
+
+    private RectF big_rectF;
+    private RectF small_rectF;
+
     private ValueAnimator mAnimator;
     private float startX = 0;
     private float scale = 1;
+    private OnCheckedChangeListener listener;
 
     public SwitchButton(Context context) {
         super(context);
@@ -61,7 +66,7 @@ public class SwitchButton extends View {
         bg_paint.setAlpha(0);
 
         big_graay_paint = new Paint();
-        big_graay_paint.setColor(Color.GRAY);
+        big_graay_paint.setColor(border_color);
         big_graay_paint.setAntiAlias(true);
         big_graay_paint.setStyle(Paint.Style.FILL);
 
@@ -84,18 +89,23 @@ public class SwitchButton extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        if (big_rectF == null) {
+            big_rectF = new RectF(3, 3, getWidth() - 3, getHeight() - 3);
+            small_rectF = new RectF(4, 4, getWidth() - 4, getHeight() - 4);
+        }
         // 底圆
-        canvas.drawRoundRect(new RectF(3, 3, getWidth() - 3, getHeight() - 3), (getHeight() - 6) / 2, (getHeight() - 6
+        canvas.drawRoundRect(big_rectF, (getHeight() - 6) / 2, (getHeight() - 6
         ) / 2, big_graay_paint);
 
         // 需要放大缩小的背景 这个在变到最大的时候会有一个边框
         canvas.save();
         canvas.scale(scale, scale, getWidth() / 2, getHeight() / 2);
-        canvas.drawRoundRect(new RectF(4, 4, getWidth() - 4, getHeight() - 4), (getHeight() - 10) / 2, (getHeight() - 10) / 2, change_paint);
+        canvas.drawRoundRect(small_rectF, (getHeight() - 10) / 2, (getHeight() - 10) / 2, change_paint);
         canvas.restore();
 
         // 画一个圆角长方形 这个只变化透明度
-        canvas.drawRoundRect(new RectF(4, 4, getWidth() - 4, getHeight() - 4), (getHeight() - 8) / 2, (getHeight() - 8) / 2, bg_paint);
+        canvas.drawRoundRect(small_rectF, (getHeight() - 8) / 2, (getHeight() - 8) / 2, bg_paint);
+
         // 带边框的圆 两个圆组合
         canvas.drawCircle(getHeight() / 2 + x, getHeight() / 2, (getHeight() - 16) / 2, circle_big_paint);
         canvas.drawCircle(getHeight() / 2 + x, getHeight() / 2, (getHeight() - 20) / 2, circle_small_paint);
@@ -106,11 +116,13 @@ public class SwitchButton extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_UP:
-                // 动画移动圆圈
-                if (startX == 0) {
-                    animateMove();
-                } else {
-                    animateBack();
+                // 动画移动圆圈 缩放背景
+                if (x == 0 || x == getWidth() - getHeight()) {
+                    if (startX == 0) {
+                        animateMove();
+                    } else {
+                        animateBack();
+                    }
                 }
                 break;
         }
@@ -129,13 +141,16 @@ public class SwitchButton extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 x = (Float) animation.getAnimatedValue();
-                scale = (1-x / (getWidth() - getHeight()));
+                scale = (1 - x / (getWidth() - getHeight()));
                 bg_paint.setAlpha((int) (255 * (x / (getWidth() - getHeight()))));
                 invalidate();
             }
         });
         startX = getWidth() - getHeight();
-
+        if (this.listener != null) {
+            this.listener.onCheckedChanged(true
+            );
+        }
     }
 
     public void animateBack() {
@@ -147,22 +162,32 @@ public class SwitchButton extends View {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 x = (Float) animation.getAnimatedValue();
-                scale =  1-(x / (getWidth() - getHeight()));
+                scale = 1 - (x / (getWidth() - getHeight()));
                 bg_paint.setAlpha((int) (255 * (x / (getWidth() - getHeight()))));
                 invalidate();
             }
         });
         startX = 0;
+        if (this.listener != null) {
+            this.listener.onCheckedChanged(false
+            );
+        }
     }
 
     /**
      * 返回是否选中
+     *
      * @return
      */
-    public boolean isSelect() {
-        return x == 0;
+    public boolean isChecked() {
+        return startX != 0;
     }
 
+    public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
+        this.listener = listener;
+    }
 
-
+    public interface OnCheckedChangeListener {
+        public  void onCheckedChanged(boolean isChecked);
+    }
 }

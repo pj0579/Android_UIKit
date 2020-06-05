@@ -13,4 +13,6 @@ public class TextChangeActivity extends BaseActivity {
         setContentView(R.layout.activity_changetext);
         bindButter();
     }
+
+
 }
