@@ -19,6 +19,8 @@ public class MeasureView extends View {
         super(context, attrs);
     }
 
+    
+
     public MeasureView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
