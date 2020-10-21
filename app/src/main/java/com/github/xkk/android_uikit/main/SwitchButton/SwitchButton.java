@@ -24,7 +24,7 @@ public class SwitchButton extends View {
     private int disable_backgroundColor; // 不变背景颜色
     private int able_backgroundColor; // 变化背景颜色
     private int border_color; // 边框颜色
-    private float x = 0; // 圆圈所 在
+    private float x = 0; // 圆圈所在
 
     private RectF big_rectF;
     private RectF small_rectF;
