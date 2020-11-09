@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Android_UIKit</string>
+    <string name="behavior_my">com.github.xkk.android_uikit.main.nest.MyBehavior</string>
+    <string name="behavior_re">com.github.xkk.android_uikit.main.nest.RecyclerViewBehavior</string>
+    <string name="footer_behavior">com.github.xkk.android_uikit.main.nest.FooterBehavior</string>
+    <string name="cart_behavior">com.github.xkk.android_uikit.main.nest.CartBehavior</string>
 </resources>

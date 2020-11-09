@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:orientation="vertical">
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/listview_checkbox_special"
+        android:button="@null"
+        android:clickable="true"
+        android:focusable="true"
+        android:checked="true"
+        android:layout_marginLeft="5dp"
+        />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp" />
+
+    <TextView
+        android:id="@+id/luxury_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/image"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@+id/image" />
+
+
+    <ImageView
+        android:id="@+id/reduce"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/number"
+        android:layout_centerVertical="true"
+        android:src="@drawable/reduce" />
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/add"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:layout_centerVertical="true"/>
+
+    <ImageView
+        android:id="@+id/add"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/add" />
+
+
+</RelativeLayout>

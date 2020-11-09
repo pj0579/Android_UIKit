@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -114,7 +115,8 @@ public class SwitchButton extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()) {
+        event.getActionMasked();
+        switch (event.getActionMasked()) {
             case MotionEvent.ACTION_UP:
                 // 动画移动圆圈 缩放背景
                 if (x == 0 || x == getWidth() - getHeight()) {

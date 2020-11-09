@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class MeasureView extends View {
@@ -43,4 +44,19 @@ public class MeasureView extends View {
         Log.v("measureSpecMode", mMode + (mMode == 2 ? "AT_MOST" : "EXECTLY"));
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_MOVE:
+                Log.i("TAG", "MOVE");
+                break;
+                case MotionEvent.ACTION_UP:
+                    Log.i("TAG", "UP");
+                    break;
+            case MotionEvent.ACTION_CANCEL:
+                Log.i("TAG", "CANCEL");
+                break;
+        }
+        return true;
+    }
 }

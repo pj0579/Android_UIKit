@@ -10,10 +10,6 @@ import butterknife.Unbinder;
 public class BaseActivity extends AppCompatActivity {
     private Unbinder unbinder;
 
-    @Override
-    public void onCreate( Bundle savedInstanceState,  PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-    }
 
     @Override
     protected void onDestroy() {

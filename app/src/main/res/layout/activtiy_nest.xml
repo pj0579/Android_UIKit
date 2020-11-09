@@ -1,27 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <com.github.xkk.android_uikit.main.nest.StickLayout
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/header_ll"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="50dp"
+        android:background="#fff"
+        android:orientation="vertical"
+        app:layout_behavior="@string/behavior_my">
+
+        <ImageView
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/category_des"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:background="@color/un_select"
+        app:layout_behavior="@string/behavior_re" />
+
+
+    <com.github.xkk.android_uikit.main.nest.RightRecycleView
+        android:id="@+id/category_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_marginLeft="100dp"
+        app:layout_behavior="@string/behavior_re" />
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#FFF">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/back" />
 
         <View
-            android:id="@+id/topView"
+            android:id="@+id/search_city_edit"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@color/colorAccent">
+            android:layout_height="33dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@+id/back"
+            android:background="@drawable/search"
+            android:drawablePadding="5dp"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:textColor="#333333"
+            android:textColorHint="#c5c5c5"
+            android:textSize="14sp" />
 
-        </View>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="80dp"
+            android:drawableLeft="@drawable/search_word_price_light"
+            android:text="  搜索衣物" />
+    </RelativeLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/md_contentRecyclerView"
+    <RelativeLayout
+        android:id="@+id/cart_items"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        app:layout_behavior="@string/cart_behavior">
+
+        <View
+            android:id="@+id/mask"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:background="#80000000" />
 
+        <RelativeLayout
+            android:id="@+id/items"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:background="@color/white"
+            android:clickable="true">
 
-        </android.support.v7.widget.RecyclerView>
-    </com.github.xkk.android_uikit.main.nest.StickLayout>
-</android.support.constraint.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:text="已选商品" />
+
+            <TextView
+                android:id="@+id/clearCloth"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:gravity="center_vertical"
+                android:text="清空已选衣物" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/cloth_select_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="40dp">
+
+            </android.support.v7.widget.RecyclerView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/cart_background"
+        android:orientation="horizontal"
+        app:layout_behavior="@string/footer_behavior">
+
+        <ImageView
+            android:id="@+id/cart_icon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/cart" />
+
+        <TextView
+
+            android:id="@+id/total_number"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_toRightOf="@id/cart_icon"
+            android:background="@drawable/money_icon_right"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="100dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

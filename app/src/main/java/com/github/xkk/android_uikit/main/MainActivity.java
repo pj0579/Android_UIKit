@@ -1,45 +1,34 @@
 package com.github.xkk.android_uikit.main;
 
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.graphics.Rect;
-import android.net.Uri;
-import android.os.AsyncTask;
+import android.content.IntentFilter;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Looper;
-import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.github.xkk.android_uikit.IMyAidlInterface;
 import com.github.xkk.android_uikit.R;
 import com.github.xkk.android_uikit.common.BaseRecyclerViewAdapter;
 import com.github.xkk.android_uikit.main.SwitchButton.SwitchActivity;
 import com.github.xkk.android_uikit.main.Text.TextChangeActivity;
-import com.github.xkk.android_uikit.main.card_views.CardPagerActivity;
+import com.github.xkk.android_uikit.main.brodercast.HooliganActivity;
+import com.github.xkk.android_uikit.main.brodercast.ScreenReceiver;
 import com.github.xkk.android_uikit.main.card_views.TinderActivity;
+import com.github.xkk.android_uikit.main.hotFix.Test;
+import com.github.xkk.android_uikit.main.kotlin.FirstKotlinActivity;
+import com.github.xkk.android_uikit.main.line.LinePointViewActvity;
 import com.github.xkk.android_uikit.main.measure_spec.MeasureSpecActivity;
+import com.github.xkk.android_uikit.main.mutifinger.MutiFlingersActivity;
+import com.github.xkk.android_uikit.main.nest.LuxuryPriceActivity;
 import com.github.xkk.android_uikit.main.wangyiyun.WangyiyunActivity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,10 +36,20 @@ import butterknife.Unbinder;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.list)
-    RecyclerView recyclerView;
+    public RecyclerView recyclerView;
 
     private Unbinder unbinder;
+    private BroadcastReceiver screenBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
+                HooliganActivity.startHooligan();
+            } else if(intent.getAction().equals(Intent.ACTION_SCREEN_ON)){
+                HooliganActivity.killHooligan();
+            }
+        }
+    };
+
 
 
     private MainRecyclerViewAdapter mainRecyclerViewAdapter;
@@ -64,12 +63,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        unbinder = ButterKnife.bind(this);
+        recyclerView = findViewById(R.id.list);
         initData();
     }
 
     public void initData() {
         List<String> list = new ArrayList<>();
+        registerService();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -81,7 +81,12 @@ public class MainActivity extends AppCompatActivity {
         list.add("网易云切换(照着自定义-移花接木撸)");
         list.add("文字渐变");
         list.add("SwitchButton");
+        list.add("了解NestedScrolling");
+        list.add("多指触控-响应第一个手指");
+        list.add("linePoint");
+        list.add("kotlin");
         mainRecyclerViewAdapter = new MainRecyclerViewAdapter(list, this, R.layout.list_item);
+        Log.v("ClassLoader1111", this.getClassLoader().toString() + "parent:" + this.getClassLoader().getParent());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mainRecyclerViewAdapter);
         mainRecyclerViewAdapter.setOnItemClickListener(new BaseRecyclerViewAdapter.OnItemClickListener() {
@@ -89,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(int position) {
                 switch (position) {
                     case 0:
+                        new Test().test();
                         Intent inent = new Intent(MainActivity.this, MeasureSpecActivity.class);
                         startActivity(inent);
                         break;
@@ -108,6 +114,21 @@ public class MainActivity extends AppCompatActivity {
                         Intent switchActivity = new Intent(MainActivity.this, SwitchActivity.class);
                         startActivity(switchActivity);
                         break;
+                    case 5:
+                        Intent NestActivity = new Intent(MainActivity.this, LuxuryPriceActivity.class);
+                        startActivity(NestActivity);
+                    case 6:
+                        Intent MutiActivity = new Intent(MainActivity.this, MutiFlingersActivity.class);
+                        startActivity(MutiActivity);
+                        break;
+                    case 7:
+                        Intent lineActivity = new Intent(MainActivity.this, LinePointViewActvity.class);
+                        startActivity(lineActivity);
+                        break;
+                    case 8:
+                        Intent kotlin = new Intent(MainActivity.this, FirstKotlinActivity.class);
+                        startActivity(kotlin);
+                        break;
                 }
             }
         });
@@ -123,8 +144,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        getApplicationContext().unregisterReceiver(screenBroadcastReceiver);
     }
 
+    private void registerService() {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_SCREEN_OFF);
+        filter.addAction(Intent.ACTION_SCREEN_ON);
+        filter.addAction(Intent.ACTION_USER_PRESENT);
+        getApplicationContext().registerReceiver(screenBroadcastReceiver, filter);
 
-
+    }
 }

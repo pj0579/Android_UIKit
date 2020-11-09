@@ -10,4 +10,13 @@
         <attr name="border_color" format="color" />
         <attr name="corner" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="LinePointView">
+        <attr name="title" format="string" />
+        <attr name="line_color" format="color" />
+        <attr name="title_size" format="dimension" />
+        <attr name="line_margin_left" format="dimension" />
+        <attr name="line_width" format="dimension" />
+    </declare-styleable>
+
 </resources>

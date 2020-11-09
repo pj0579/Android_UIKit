@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="售后状态：处理中" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.github.xkk.android_uikit.main.line.LinePointView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:line_margin_left="15dp"
+                app:line_width="2dp"
+                app:title="申诉结果"
+                app:title_size="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/left_line"
+                android:paddingLeft="15dp"
+                android:text="显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="14dp"
+                android:background="@drawable/left_line"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="2020-10-11 24:00"
+                android:textColor="@color/colorAccent" />
+
+            <com.github.xkk.android_uikit.main.line.LinePointView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:line_margin_left="15dp"
+                app:line_width="2dp"
+                app:title="客服处理"
+                app:title_size="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/left_line"
+                android:paddingLeft="15dp"
+                android:text="显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="14dp"
+                android:background="@drawable/left_line"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="2020-10-11 24:00"
+                android:textColor="@color/colorAccent" />
+
+            <com.github.xkk.android_uikit.main.line.LinePointView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:line_margin_left="15dp"
+                app:line_width="2dp"
+                app:title="客服处理"
+                app:title_size="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/left_line"
+                android:paddingLeft="15dp"
+                android:text="显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginLeft="14dp"
+                android:background="@drawable/left_line"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="2020-10-11 24:00"
+                android:textColor="@color/colorAccent" />
+
+            <com.github.xkk.android_uikit.main.line.LinePointView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:line_margin_left="15dp"
+                app:line_width="2dp"
+                app:title="客服处理"
+                app:title_size="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/left_line"
+                android:paddingLeft="15dp"
+                android:text="显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示"
+                android:textColor="@color/colorPrimary" />
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="售后状态：处理中" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="15dp"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <com.github.xkk.android_uikit.main.line.LinePointView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            app:line_margin_left="15dp"
+                            app:line_width="2dp"
+                            app:title="申诉结果"
+                            app:title_size="18sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/left_line"
+                            android:paddingLeft="15dp"
+                            android:text="显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="14dp"
+                            android:background="@drawable/left_line"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="15dp"
+                            android:text="2020-10-11 24:00"
+                            android:textColor="@color/colorAccent" />
+
+                        <com.github.xkk.android_uikit.main.line.LinePointView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            app:line_margin_left="15dp"
+                            app:line_width="2dp"
+                            app:title="客服处理"
+                            app:title_size="18sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/left_line"
+                            android:paddingLeft="15dp"
+                            android:text="显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="14dp"
+                            android:background="@drawable/left_line"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="15dp"
+                            android:text="2020-10-11 24:00"
+                            android:textColor="@color/colorAccent" />
+
+                        <com.github.xkk.android_uikit.main.line.LinePointView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            app:line_margin_left="15dp"
+                            app:line_width="2dp"
+                            app:title="客服处理"
+                            app:title_size="18sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/left_line"
+                            android:paddingLeft="15dp"
+                            android:text="显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="14dp"
+                            android:background="@drawable/left_line"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="15dp"
+                            android:text="2020-10-11 24:00"
+                            android:textColor="@color/colorAccent" />
+
+                        <com.github.xkk.android_uikit.main.line.LinePointView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            app:line_margin_left="15dp"
+                            app:line_width="2dp"
+                            app:title="客服处理"
+                            app:title_size="18sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/left_line"
+                            android:paddingLeft="15dp"
+                            android:text="显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示显示没结果时不显示没结果时不显示没结果时不显示没结果时不显示"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="14dp"
+                            android:background="@drawable/left_line"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="15dp"
+                            android:text="2020-10-11 24:00"
+                            android:textColor="@color/colorAccent" />
+
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+                android:layout_height="30dp"
+                android:layout_marginLeft="14dp"
+                android:background="@drawable/left_line"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="2020-10-11 24:00"
+                android:textColor="@color/colorAccent" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
